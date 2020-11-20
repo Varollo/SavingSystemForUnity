@@ -1,0 +1,15 @@
+{
+    "name": "com.varollo.saving_system_for_unity.editor",
+    "references": [
+        "GUID:55d32e9ea5d895f4ea26564076c6f70f"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

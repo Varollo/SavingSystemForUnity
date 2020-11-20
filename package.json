@@ -1,0 +1,18 @@
+{
+  "name": "com.varollo.saving_system_for_unity",
+  "version": "1.0.0",
+  "displayName": "Saving System for Unity",
+  "description": "My implementation of a Saving System for Unity based on an existing tutorial by DapperDino.\n\nThat tutorial can be found here: https://youtu.be/f5GvfZfy3yk",
+  "unity": "2019.1",
+  "keywords": [
+    "saving",
+    "loading"
+  ],
+  "author": {
+    "name": "Gabriel Carollo (Varollo)",
+    "email": "rimoldi98@gmail.com",
+    "url": "http://varollo.github.io"
+  },
+  "type": "library",
+  "hideInEditor": false
+}
