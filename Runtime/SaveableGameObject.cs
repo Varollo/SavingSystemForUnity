@@ -7,6 +7,9 @@ namespace Varollo.SavingSystem
 {
     public class SaveableGameObject : MonoBehaviour
     {
+        [SerializeField] private bool addToSaveList = true;
+        [SerializeField] private bool removeFromSaveList = true;
+        [Space]
         [SerializeField] private string id;
         public string Id { get => id; private set => id = value; }
         public void GenerateId() => Id = Guid.NewGuid().ToString();
@@ -16,7 +19,10 @@ namespace Varollo.SavingSystem
         /// </summary>
         private void Awake()
         {
-            SaveManager.AddToSaveList(this);
+            if (addToSaveList)
+            {
+                SaveManager.AddToSaveList(this);
+            }
         }
 
         /// <summary>
@@ -24,7 +30,10 @@ namespace Varollo.SavingSystem
         /// </summary>
         private void OnDestroy()
         {
-            SaveManager.RemoveFromSaveList(this);
+            if (removeFromSaveList)
+            {
+                SaveManager.RemoveFromSaveList(this);
+            }
         }
 
         /// <summary>
@@ -51,7 +60,11 @@ namespace Varollo.SavingSystem
 
             foreach (ISaveable saveable in GetComponents<ISaveable>())
             {
-                if (stateDictionary.TryGetValue(saveable.GetType().ToString(), out object value))
+                if (state == null)
+                {
+                    saveable.OnNullState();
+                }
+                else if (stateDictionary.TryGetValue(saveable.GetType().ToString(), out object value))
                 {
                     saveable.RestoreState(value);
                 }

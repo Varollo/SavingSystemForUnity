@@ -11,5 +11,9 @@ namespace Varollo.SavingSystem
         /// </summary>
         /// <param name="state"></param>
         void RestoreState(object state);
+        /// <summary>
+        /// This method is called when no state was retrieved
+        /// </summary>
+        void OnNullState();
     }
 }

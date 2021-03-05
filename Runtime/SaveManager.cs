@@ -24,7 +24,15 @@ namespace Varollo.SavingSystem
         /// <param name="saveable"></param>
         public static void AddToSaveList(SaveableGameObject saveable)
         {
-            _saveableGameObjects.Add(saveable);
+            if (!_saveableGameObjects.Contains(saveable))
+            {
+                _saveableGameObjects.Add(saveable);
+                //Debug.Log(saveable.name);
+            }
+            else
+            {
+                //Debug.Log(saveable.name + " already in To Save list.");
+            }
         }
 
         /// <summary>
@@ -92,6 +100,7 @@ namespace Varollo.SavingSystem
             using (FileStream stream = File.Open(GetFullSavePath(fileId), FileMode.Open))
             {
                 BinaryFormatter formatter = new BinaryFormatter();
+                stream.Position = 0;
                 return (Dictionary<string, object>)formatter.Deserialize(stream);
             }
         }
@@ -119,6 +128,10 @@ namespace Varollo.SavingSystem
                 if (state.TryGetValue(saveable.Id, out object value))
                 {
                     saveable.RestoreState(value);
+                }
+                else
+                {
+                    saveable.RestoreState(null);
                 }
             }
         }

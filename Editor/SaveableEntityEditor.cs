@@ -3,6 +3,7 @@ using UnityEditor;
 
 namespace Varollo.SavingSystem
 {
+#if UNITY_EDITOR
     [CustomEditor(typeof(SaveableGameObject))]
     public class SaveableEntityEditor : Editor
     {
@@ -22,4 +23,5 @@ namespace Varollo.SavingSystem
 
         }
     }
+#endif
 }
